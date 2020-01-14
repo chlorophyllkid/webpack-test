@@ -11,13 +11,13 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     chunkFilename: '[name].chunk.js',
-    path: path.resolve(__dirname, 'dist')
+    publicPath: path.resolve(__dirname, 'dist', '/')
   },
   module: {
     rules: [
       {
         test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -51,6 +51,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'test-2.html',
       template: 'src/test-2.html',
+      chunks: ['test-2'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'subfolder/test-3.html',
+      template: 'src/modules/organisms/header/header.html',
       chunks: ['test-2'],
     })
   ]

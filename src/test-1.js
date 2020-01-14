@@ -4,7 +4,7 @@ const button = document.querySelector('#addConsoleScript');
 
 button.addEventListener(
   'click',
-  (event) => import('./console').then(module => {
+  (event) => import(/* webpackChunkName: 'console' */ './console').then(module => {
     const print = module.default;
     print();
   }),
